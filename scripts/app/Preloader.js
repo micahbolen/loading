@@ -1,10 +1,36 @@
-define(["jquery","popcorn-complete.min"], function($) {
+define(["jquery","popcorn-complete.min","tween.min"], function($) {
 
   function Preloader() {
 
 
     $("#loading").height(window.innerHeight);
 
+    init();
+			animate();
+
+			function init() {
+
+				var output = document.createElement( 'div' );
+        output.style.cssText = 'display:block; width:0px; position: absolute; left: 0px; top: 0px; opacity: 0.05; background-color:#0F0;height:25px;z-index:3';
+				document.body.appendChild( output );
+
+				var tween = new TWEEN.Tween( { x: 0, y: 0 } )
+					.to( { x: window.innerWidth }, 84000 )
+					.easing( TWEEN.Easing.Linear.None )
+					.onUpdate( function () {
+
+						output.style.width = this.x + 'px';
+					} )
+					.start();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				TWEEN.update();
+
+			}
 
     var q = document.createElement('canvas');
     q.setAttribute('id', 'matrix');
@@ -59,13 +85,13 @@ define(["jquery","popcorn-complete.min"], function($) {
           octx.fillStyle = 'black';
           octx.globalCompositeOperation = 'destination-out';
           if (seconds >= 70) {
-            var textString = "Loading in 1:" + (seconds - 60);
+            var textString = "Starting in 1:" + (seconds - 60);
           } else if ( seconds >= 60 ) {
-            var textString = "Loading in 1:0" + (seconds - 60);
+            var textString = "Starting in 1:0" + (seconds - 60);
           } else if (seconds >= 10) {
-            var textString = "Loading in :" + seconds;
+            var textString = "Starting in  :" + seconds;
           } else {
-            var textString = "Loading in :0" + seconds;
+            var textString = "Starting in  :0" + seconds;
           }
 
 
