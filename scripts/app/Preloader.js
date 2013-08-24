@@ -226,7 +226,7 @@ define(["jquery","popcorn-complete.min"], function($) {
           })
     .code({ start: 51,
            end: 55,
-           html: $('<h1 style="margin-top:'+$('#loading').height()*.75+'px">created by <a href="http://micahdbolen.wordpress.com/" target="_blank">Micah Delane Bolen</a></h1>'),
+           html: $('<h1 style="margin-top:'+$('#loading').height()*.75+'px">created by <a href="http://micahdbolen.wordpress.com/" target="_blank">Micah Delane Bolen</a>.</h1>'),
            onStart: function( options ) {
 
              $('#loading').append(options.html);
