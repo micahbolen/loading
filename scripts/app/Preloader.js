@@ -246,6 +246,9 @@ define(["jquery","popcorn-complete.min"], function($) {
            onEnd: function(options) {
 
              options.html.fadeOut();
+              var html = '<div id="no-chrome"><h1>End of demo. Contact <a href="http://micahdbolen.wordpress.com/">Micah</a> for more info.</h1></div>';
+
+      $('body').html(html);
            }
           });
 
