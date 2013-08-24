@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'PressStart2P';
+  font-style: normal;
+  font-weight: 400;
+  src: url(http://themes.googleusercontent.com/static/fonts/pressstart2p/v1/8Lg6LX8-ntOHUQnvQ0E7o3dD2UuwsmbX3BOp4SL_VwM.woff) format('woff');
+}
+
+html, body {margin:0; padding:0;background-color:#000;overflow:hidden;}
+
+h1 {
+  font: 'PressStart2p' cursive;
+  color: #0F0;
+  position: absolute;
+  z-index: 2;
+  opacity: 0.05;
+  padding: 20px;
+}
+
+h1 a {
+  color: #0F0;
+  opacity: 1;
+}
+
+
+#no-chrome {
+  margin: 0 auto;
+}
+
+#no-chrome h1 {
+  font-family: sans-serif;
+  opacity: 1;
+
+  position: relative;
+}
+
+
+
+#loading {
+  margin:0;
+  padding:0;
+  position:relative;
+
+}
+
+#matrix {
+ position: absolute;
+ z-index:0;
+}
+
+#overlay {
+ position: absolute;
+  z-index:1;
+}
+
