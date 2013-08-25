@@ -2,14 +2,8 @@ define(["jquery","popcorn-complete.min","tween.min"], function($) {
 
   function Preloader() {
 
-
-    $("#loading").height(window.innerHeight);
-
-    init();
-			animate();
-
 			function init() {
-
+        $("#loading").height(window.innerHeight);
 				var output = document.createElement( 'div' );
         output.style.cssText = 'display:block; width:0px; position: absolute; left: 0px; top: 0px; opacity: 0.05; background-color:#0F0;height:25px;z-index:3';
 				document.body.appendChild( output );
@@ -46,13 +40,21 @@ define(["jquery","popcorn-complete.min","tween.min"], function($) {
       ctx.fillStyle='#0F0';
       p.map(function(v,i) {
         ctx.fillText(String.fromCharCode(3e4+Math.random()*33),i*10,v);
-        p[i] = (v > 758 + Math.random() * 1e4) ? 0 : v + 10;
-
+        var rand = Math.random();
+        p[i] = (v > 758 + rand * 1e4) ? 0 : v + 10;
+        if(v > 758 + rand * 1e4) {
+          $('#matrix').show();
+        }
       });
 
     }
+
+    for(i=0; i<256; i++) {
+      p[i]=1;
+    }
+
     window.setInterval(doMatrix,33);
-    for(i=0; i<256; p[i++]=1);
+
 
     var o = document.createElement('canvas');
     o.setAttribute('id', 'overlay');
@@ -67,6 +69,9 @@ define(["jquery","popcorn-complete.min","tween.min"], function($) {
       start: 0,
       end: 84,
       onStart: function( options ) {
+        init();
+        animate();
+
         setInterval(function(){
           var octx = o.getContext('2d');
           o.width = window.innerWidth;

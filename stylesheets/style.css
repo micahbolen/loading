@@ -45,6 +45,7 @@ h1 a {
 #matrix {
  position: absolute;
  z-index:0;
+  display:none;
 }
 
 #overlay {
