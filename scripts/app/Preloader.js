@@ -1,14 +1,22 @@
-define(["jquery","popcorn-complete.min","tween.min"], function($) {
+define(["jquery","popcorn-complete.min","tween.min","jcanvas.min"], function($) {
 
   function Preloader() {
 
 			function init() {
+        var left = (window.innerWidth / 2) - 250;
+        var top = (window.innerHeight/ 2) - 250;
+
+        $("#waveform").css({"margin-left":left+"px", "margin-top":top+"px"});
+
+         $("#waveform").fadeIn();
+
+
         $("#loading").height(window.innerHeight);
 				var output = document.createElement( 'div' );
         output.style.cssText = 'display:block; width:0px; position: absolute; left: 0px; top: 0px; opacity: 0.05; background-color:#0F0;height:25px;z-index:3';
 				document.body.appendChild( output );
 
-				var tween = new TWEEN.Tween( { x: 0, y: 0 } )
+				var barTween = new TWEEN.Tween( { x: 0, y: 0 } )
 					.to( { x: window.innerWidth }, 84000 )
 					.easing( TWEEN.Easing.Linear.None )
 					.onUpdate( function () {
@@ -16,6 +24,32 @@ define(["jquery","popcorn-complete.min","tween.min"], function($) {
 						output.style.width = this.x + 'px';
 					} )
 					.start();
+
+        var wfTween = new TWEEN.Tween( { x: 0 } )
+        .to({x: 1800}, 84500 )
+        .easing( TWEEN.Easing.Linear.None )
+        .onUpdate(function() {
+          $("#waveform").drawEllipse({
+  fillStyle: "#000",
+  x: 140, y: 70,
+  width: 155, height: 155
+});
+         for(i=0; i < 18; i++) {
+        $("#waveform").drawImage({
+          source: "images/loading.png",
+          x: 140, y: 70,
+          width:1,
+  sWidth: 1,
+          scale: 2,
+  sx: this.x, sy: 0,
+          cropFromCenter:false,
+          rotate: i*10
+      });
+
+         }
+
+        })
+        .start();
 
 			}
 

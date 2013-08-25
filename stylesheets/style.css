@@ -53,3 +53,12 @@ h1 a {
   z-index:1;
 }
 
+#waveform {
+  position: absolute;
+  z-index: 4;
+  width:500px;
+  height: 500px;
+
+  opacity:0.05;
+  display:none;
+}

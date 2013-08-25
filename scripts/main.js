@@ -11,17 +11,17 @@ requirejs.config({
     jquery: "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min"
   },
   "shim": {
-        "jquery.fittext": ["jquery"]
-
+        "jquery.fittext": ["jquery"],
+        "jcanvas.min": ["jquery"]
     }
 });
 
 // Start the main app logic.
-define(["jquery","app/Preloader","jquery.fittext"], function($,Preloader) {
+define(["jquery","app/Preloader"], function($,Preloader) {
 
   $(function() {
 
-    $('h1').fitText();
+
 
     var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
