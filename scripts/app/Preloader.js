@@ -69,7 +69,7 @@ define(["jquery","popcorn-complete.min","tween.min","jcanvas.min"], function($) 
 
     var p = [];
     function doMatrix() {
-      ctx.fillStyle='rgba(0,0,0,.05)';
+      ctx.fillStyle='rgba(0,0,0,.01)';
       ctx.fillRect(0,0,q.width,q.height);
       ctx.fillStyle='#0F0';
       p.map(function(v,i) {
